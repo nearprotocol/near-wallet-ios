@@ -7,14 +7,25 @@
 //
 
 import UIKit
+import WebKit
+
+extension WKWebView {
+    func load(_ urlString: String) {
+        if let url = URL(string: urlString) {
+            let request = URLRequest(url: url)
+            load(request)
+        }
+    }
+}
 
 class ViewController: UIViewController {
+    let webView = WKWebView()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    override func loadView() {
+        self.view = webView
+
+        webView.load("https://wallet.testnet.near.org")
     }
-
 
 }
 
