@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		BFF63BF71C907A3CAB2554D1 /* Pods_NEARWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831E5C40798864AA5EAD0F01 /* Pods_NEARWallet.framework */; };
-		D561B6082480EE9A00630C03 /* KeyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561B6072480EE9A00630C03 /* KeyUtils.swift */; };
 		D58AC68624788AD20083D217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AC68524788AD20083D217 /* AppDelegate.swift */; };
 		D58AC68824788AD20083D217 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AC68724788AD20083D217 /* SceneDelegate.swift */; };
 		D58AC68A24788AD20083D217 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AC68924788AD20083D217 /* ViewController.swift */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		422E3E32CC12CF8A885CFFDE /* Pods-NEARWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NEARWallet.debug.xcconfig"; path = "Target Support Files/Pods-NEARWallet/Pods-NEARWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		831E5C40798864AA5EAD0F01 /* Pods_NEARWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NEARWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D561B6072480EE9A00630C03 /* KeyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyUtils.swift; sourceTree = "<group>"; };
 		D58AC68224788AD20083D217 /* NEAR Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NEAR Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58AC68524788AD20083D217 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D58AC68724788AD20083D217 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +51,6 @@
 				422E3E32CC12CF8A885CFFDE /* Pods-NEARWallet.debug.xcconfig */,
 				DB18DE3F44D34FA7C92B5EAF /* Pods-NEARWallet.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,7 +82,6 @@
 				D58AC68E24788AD70083D217 /* Assets.xcassets */,
 				D58AC69024788AD70083D217 /* LaunchScreen.storyboard */,
 				D58AC69324788AD70083D217 /* Info.plist */,
-				D561B6072480EE9A00630C03 /* KeyUtils.swift */,
 			);
 			path = NEARWallet;
 			sourceTree = "<group>";
@@ -217,7 +213,6 @@
 				D58AC68A24788AD20083D217 /* ViewController.swift in Sources */,
 				D58AC68624788AD20083D217 /* AppDelegate.swift in Sources */,
 				D58AC68824788AD20083D217 /* SceneDelegate.swift in Sources */,
-				D561B6082480EE9A00630C03 /* KeyUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
