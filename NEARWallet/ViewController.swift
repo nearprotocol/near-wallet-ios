@@ -18,18 +18,31 @@ extension WKWebView {
     }
 }
 
-class ViewController: UIViewController {
-    let webView = WKWebView()
+class ViewController: UIViewController, WKScriptMessageHandler {
+
+
+    let contentController = WKUserContentController()
+    lazy var webView: WKWebView = {
+        self.contentController.add(self, name: "signer")
+        let config = WKWebViewConfiguration()
+        config.userContentController = self.contentController
+        return WKWebView(frame: CGRect.zero, configuration: config)
+    }()
 
     override func loadView() {
         self.view = webView
 
         webView.load("https://wallet.testnet.near.org")
 
-
-        
-
+        webView.evaluateJavaScript("window.webkit.messageHandlers.signer.postMessage({foo:'bar'})")
     }
 
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print("message.body type: \(type(of: message.body))")
+        let body = message.body as! NSDictionary
+        print("body: \(body.description.prefix(500))")
+        //let method = body["method"]! as! String
+
+    }
 }
 
