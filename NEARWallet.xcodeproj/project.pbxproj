@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFF63BF71C907A3CAB2554D1 /* Pods_NEARWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831E5C40798864AA5EAD0F01 /* Pods_NEARWallet.framework */; };
+		D561B6082480EE9A00630C03 /* KeyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561B6072480EE9A00630C03 /* KeyUtils.swift */; };
 		D58AC68624788AD20083D217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AC68524788AD20083D217 /* AppDelegate.swift */; };
 		D58AC68824788AD20083D217 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AC68724788AD20083D217 /* SceneDelegate.swift */; };
 		D58AC68A24788AD20083D217 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58AC68924788AD20083D217 /* ViewController.swift */; };
@@ -17,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		422E3E32CC12CF8A885CFFDE /* Pods-NEARWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NEARWallet.debug.xcconfig"; path = "Target Support Files/Pods-NEARWallet/Pods-NEARWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		831E5C40798864AA5EAD0F01 /* Pods_NEARWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NEARWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D561B6072480EE9A00630C03 /* KeyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyUtils.swift; sourceTree = "<group>"; };
 		D58AC68224788AD20083D217 /* NEAR Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NEAR Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58AC68524788AD20083D217 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D58AC68724788AD20083D217 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +31,7 @@
 		D58AC69124788AD70083D217 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D58AC69324788AD70083D217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5A916D924788E0000C8F805 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		DB18DE3F44D34FA7C92B5EAF /* Pods-NEARWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NEARWallet.release.xcconfig"; path = "Target Support Files/Pods-NEARWallet/Pods-NEARWallet.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,18 +40,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5A916DA24788E0000C8F805 /* WebKit.framework in Frameworks */,
+				BFF63BF71C907A3CAB2554D1 /* Pods_NEARWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A5495EEE8762FC524B93435 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				422E3E32CC12CF8A885CFFDE /* Pods-NEARWallet.debug.xcconfig */,
+				DB18DE3F44D34FA7C92B5EAF /* Pods-NEARWallet.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D58AC67924788AD20083D217 = {
 			isa = PBXGroup;
 			children = (
 				D58AC68424788AD20083D217 /* NEARWallet */,
 				D58AC68324788AD20083D217 /* Products */,
 				D5A916D824788E0000C8F805 /* Frameworks */,
+				2A5495EEE8762FC524B93435 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +85,7 @@
 				D58AC68E24788AD70083D217 /* Assets.xcassets */,
 				D58AC69024788AD70083D217 /* LaunchScreen.storyboard */,
 				D58AC69324788AD70083D217 /* Info.plist */,
+				D561B6072480EE9A00630C03 /* KeyUtils.swift */,
 			);
 			path = NEARWallet;
 			sourceTree = "<group>";
@@ -75,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				D5A916D924788E0000C8F805 /* WebKit.framework */,
+				831E5C40798864AA5EAD0F01 /* Pods_NEARWallet.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D58AC69624788AD70083D217 /* Build configuration list for PBXNativeTarget "NEARWallet" */;
 			buildPhases = (
+				6BE4E70A7B0CB0B77CD585F2 /* [CP] Check Pods Manifest.lock */,
 				D58AC67E24788AD20083D217 /* Sources */,
 				D58AC67F24788AD20083D217 /* Frameworks */,
 				D58AC68024788AD20083D217 /* Resources */,
+				9CDA3906CB784293F47F2284 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,6 +167,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6BE4E70A7B0CB0B77CD585F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NEARWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CDA3906CB784293F47F2284 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NEARWallet/Pods-NEARWallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NEARWallet/Pods-NEARWallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NEARWallet/Pods-NEARWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D58AC67E24788AD20083D217 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -153,6 +217,7 @@
 				D58AC68A24788AD20083D217 /* ViewController.swift in Sources */,
 				D58AC68624788AD20083D217 /* AppDelegate.swift in Sources */,
 				D58AC68824788AD20083D217 /* SceneDelegate.swift in Sources */,
+				D561B6082480EE9A00630C03 /* KeyUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +359,7 @@
 		};
 		D58AC69724788AD70083D217 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 422E3E32CC12CF8A885CFFDE /* Pods-NEARWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -312,6 +378,7 @@
 		};
 		D58AC69824788AD70083D217 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB18DE3F44D34FA7C92B5EAF /* Pods-NEARWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -25,6 +25,10 @@ class ViewController: UIViewController {
         self.view = webView
 
         webView.load("https://wallet.testnet.near.org")
+
+
+        
+
     }
 
 }
