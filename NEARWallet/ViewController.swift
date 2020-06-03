@@ -23,11 +23,13 @@ extension WKWebView {
 
 //let WALLET_URL = "https://wallet.testnet.near.org"
 
-let WALLET_URL = "https://a9bc92f45c1e.ngrok.io"
+let WALLET_URL = "https://near-wallet-pr-636.onrender.com"
 
 class ViewController: UIViewController, WKScriptMessageHandler {
 
-    let keyStore = KeychainKeyStore()
+    lazy var signer: Signer = {
+        return InMemorySigner(keyStore: KeychainKeyStore())
+    }()
 
     let contentController = WKUserContentController()
     lazy var webView: WKWebView = {
@@ -54,7 +56,17 @@ class ViewController: UIViewController, WKScriptMessageHandler {
             switch method {
             case "createKey":
                 returnResult(requestId: requestId,
-                             result: self.createKey(accountId: args["accountId"]! as! String, networkId: args["networkId"]! as! String))
+                             result: self.createKey(accountId: args["accountId"]! as! String,
+                                                    networkId: args["networkId"]! as! String))
+            case "getPublicKey":
+                returnResult(requestId: requestId,
+                             result: self.getPublicKey(accountId: args["accountId"]! as! String,
+                                                       networkId: args["networkId"]! as! String))
+            case "signMessage":
+                returnResult(requestId: requestId,
+                             result: self.signMessage(message: args["message"]! as! String, accountId: args["accountId"]! as! String,
+                                                    networkId: args["networkId"]! as! String))
+
             default:
                 print("unknown method: \(method)")
             }
@@ -69,7 +81,9 @@ class ViewController: UIViewController, WKScriptMessageHandler {
             // TODO: Handle errors and pass to JS
             if let jsonData = try? encoder.encode(resultValue) {
                 if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    self.webView.evaluateJavaScript("__walletCallback({ requestId: \(requestId),  result: \(jsonString)})") { (jsResult, jsError) in
+                    let jsCallback = "__walletCallback({ requestId: \(requestId),  result: \(jsonString)})"
+                    print("jsCallback: \(jsCallback)")
+                    self.webView.evaluateJavaScript(jsCallback  ) { (jsResult, jsError) in
                         print("jsResult: \(jsResult) jsError: \(jsError)")
                     }
                 }
@@ -81,13 +95,27 @@ class ViewController: UIViewController, WKScriptMessageHandler {
 
     func createKey(accountId: String, networkId: String) -> Promise<String> {
         return async {
-            if let keyPair = try await(self.keyStore.getKey(networkId: networkId, accountId: accountId)) {
-                return keyPair.getPublicKey().toString()
-            } else {
-                let keyPair = try KeyPairEd25519.fromRandom()
-                try await(self.keyStore.setKey(networkId: networkId, accountId: accountId, keyPair: keyPair))
-                return keyPair.getPublicKey().toString()
+            let publicKey = try await(self.signer.createKey(accountId: accountId, networkId: networkId))
+            return publicKey.toString()
+        }
+    }
+
+    func getPublicKey(accountId: String, networkId: String) -> Promise<String?> {
+        return async {
+            if let publicKey = try await(self.signer.getPublicKey(accountId: accountId, networkId: networkId)) {
+                return publicKey.toString()
             }
+
+            return nil
+        }
+    }
+
+    func signMessage(message: String, accountId: String, networkId: String) -> Promise<String> {
+        return async {
+            let messageData = Data(base64Encoded: message)!
+            let signature = try! await(self.signer.signMessage(message: [UInt8](messageData), accountId: accountId, networkId: networkId))
+            // TODO: Make sure errors (like key not available) propagated properly
+            return Data(signature.signature).base64EncodedString()
         }
     }
 }
