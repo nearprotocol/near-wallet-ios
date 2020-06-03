@@ -25,7 +25,7 @@ extension WKWebView {
 
 let WALLET_URL = "https://near-wallet-pr-636.onrender.com"
 
-class ViewController: UIViewController, WKScriptMessageHandler {
+class ViewController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate {
 
     lazy var signer: Signer = {
         return InMemorySigner(keyStore: KeychainKeyStore())
@@ -41,6 +41,7 @@ class ViewController: UIViewController, WKScriptMessageHandler {
 
     override func loadView() {
         self.view = webView
+        webView.navigationDelegate = self
 
         webView.load(WALLET_URL)
     }
@@ -71,6 +72,18 @@ class ViewController: UIViewController, WKScriptMessageHandler {
                 print("unknown method: \(method)")
             }
         }
+    }
+
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let url = navigationAction.request.url {
+            if navigationAction.navigationType == .linkActivated && !url.absoluteString.starts(with: WALLET_URL) {
+                UIApplication.shared.open(url)
+                decisionHandler(.cancel)
+                return
+            }
+        }
+
+        decisionHandler(.allow)
     }
 
     func returnResult<T>(requestId: NSNumber, result: Promise<T>) -> Void where T : Encodable {
